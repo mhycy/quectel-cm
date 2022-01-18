@@ -23,10 +23,10 @@ endif
 CFLAGS+=-Wall -O1
 
 release: clean qmi-proxy mbim-proxy
-	$(CC) ${CFLAGS} -s ${QL_CM_SRC} ${QL_CM_DHCP} -o quectel-CM -lpthread -ldl -lrt
+	$(CC) ${CFLAGS} -s ${QL_CM_SRC} ${QL_CM_DHCP} -o quectel-cm -lpthread -ldl -lrt
 
 debug: clean
-	$(CC) ${CFLAGS} -g -DCM_DEBUG ${QL_CM_SRC} ${QL_CM_DHCP} -o quectel-CM -lpthread -ldl -lrt
+	$(CC) ${CFLAGS} -g -DCM_DEBUG ${QL_CM_SRC} ${QL_CM_DHCP} -o quectel-cm -lpthread -ldl -lrt
 
 qmi-proxy:
 	$(CC) ${CFLAGS} -s quectel-qmi-proxy.c  -o quectel-qmi-proxy -lpthread -ldl -lrt
@@ -35,4 +35,4 @@ mbim-proxy:
 	$(CC) ${CFLAGS} -s quectel-mbim-proxy.c  -o quectel-mbim-proxy -lpthread -ldl -lrt
 
 clean:
-	rm -rf *.o libmnl/*.o quectel-CM quectel-qmi-proxy quectel-mbim-proxy
+	rm -rf *.o libmnl/*.o quectel-cm quectel-qmi-proxy quectel-mbim-proxy
